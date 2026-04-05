@@ -166,10 +166,12 @@ st.markdown("""
     50%      { opacity:0.5; }
   }
 
-  /* TIMESTAMP FIXADO */
+              /* ══════════════════════════════════════════════════════
+     TIMESTAMP FIXADO - POSICIONADO CORRETAMENTE
+  ══════════════════════════════════════════════════════ */
   #ts-badge {
     position: fixed;
-    top: 10px;
+    top: 60px;  /* Aumentado para ficar abaixo do botão de deploy */
     right: 16px;
     z-index: 99999;
     background: linear-gradient(135deg, rgba(9,14,24,0.96), rgba(15,29,46,0.96));
@@ -186,6 +188,7 @@ st.markdown("""
     pointer-events: none;
     animation: fadeUp 0.5s ease both;
   }
+
   #ts-dot {
     width: 7px;
     height: 7px;
