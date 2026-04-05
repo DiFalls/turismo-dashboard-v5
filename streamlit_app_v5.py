@@ -151,28 +151,19 @@ st.markdown("""
     border-right: 1px solid #2A4A6B !important;
     transition: all 0.35s cubic-bezier(0.4,0,0.2,1) !important;
   }
-  
+            
   /* Quando a sidebar está expandida, mantém 516px */
   section[data-testid="stSidebar"][aria-expanded="true"] {
     width: 516px !important;
     min-width: 516px !important;
   }
-  
-  /* Quando a sidebar está colapsada, ela pode encolher */
-  section[data-testid="stSidebar"][aria-expanded="false"] {
-    width: 0px !important;
-    min-width: 0px !important;
-    overflow: hidden !important;
-  }
-  
-  section[data-testid="stSidebar"] + div {
-    margin-left: 516px !important;
-    transition: margin-left 0.35s ease !important;
-  }
-  
-  /* Quando colapsada, ajusta a margem do conteúdo */
-  section[data-testid="stSidebar"][aria-expanded="false"] + div {
-    margin-left: 0px !important;
+   
+  section[data-testid="stSidebar"] .stSelectbox > div[data-baseweb="select"] > div,
+  section[data-testid="stSidebar"] .stMultiSelect > div[data-baseweb="select"] > div {
+    background: #1A2436 !important;
+    border: 1px solid #2A4A6B !important;
+    border-radius: 8px !important;
+    color: #CBD5E1 !important;
   }
 
   /* ── Animações ── */
