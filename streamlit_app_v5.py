@@ -151,11 +151,9 @@ st.markdown("""
     border-right: 1px solid #2A4A6B !important;
     transition: all 0.35s cubic-bezier(0.4,0,0.2,1) !important;
   }
-            
-  /* Quando a sidebar está expandida, mantém 516px */
-  section[data-testid="stSidebar"][aria-expanded="true"] {
-    width: 516px !important;
-    min-width: 516px !important;
+  
+  section[data-testid="stSidebar"] + div {
+    margin-left: 516px !important;
   }
    
   section[data-testid="stSidebar"] .stSelectbox > div[data-baseweb="select"] > div,
