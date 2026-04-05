@@ -102,7 +102,7 @@ st.markdown("""
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap');
 
-    /* RESTAURA O BOTÃO DE TOGGLE DA SIDEBAR */
+  /* RESTAURA O BOTÃO DE TOGGLE DA SIDEBAR */
   button[kind="header"] {
     display: flex !important;
     visibility: visible !important;
@@ -110,7 +110,8 @@ st.markdown("""
     background: rgba(245, 166, 35, 0.15) !important;
     border-radius: 8px !important;
     z-index: 9999 !important;
-    width: 32px !important;
+    min-width: 516px !important;
+    width: 516px !important;
     height: 32px !important;
     align-items: center !important;
     justify-content: center !important;
@@ -143,13 +144,35 @@ st.markdown("""
   }
 
   /* ── Sidebar ── */
+  section[data-testid="stSidebar"] {
+    min-width: 516px !important;
+    width: 516px !important;
+    background: #090E18 !important;
+    border-right: 1px solid #2A4A6B !important;
+    transition: all 0.35s cubic-bezier(0.4,0,0.2,1) !important;
+  }
   
-  section[data-testid="stSidebar"] .stSelectbox > div[data-baseweb="select"] > div,
-  section[data-testid="stSidebar"] .stMultiSelect > div[data-baseweb="select"] > div {
-    background: #1A2436 !important;
-    border: 1px solid #2A4A6B !important;
-    border-radius: 8px !important;
-    color: #CBD5E1 !important;
+  /* Quando a sidebar está expandida, mantém 516px */
+  section[data-testid="stSidebar"][aria-expanded="true"] {
+    width: 516px !important;
+    min-width: 516px !important;
+  }
+  
+  /* Quando a sidebar está colapsada, ela pode encolher */
+  section[data-testid="stSidebar"][aria-expanded="false"] {
+    width: 0px !important;
+    min-width: 0px !important;
+    overflow: hidden !important;
+  }
+  
+  section[data-testid="stSidebar"] + div {
+    margin-left: 516px !important;
+    transition: margin-left 0.35s ease !important;
+  }
+  
+  /* Quando colapsada, ajusta a margem do conteúdo */
+  section[data-testid="stSidebar"][aria-expanded="false"] + div {
+    margin-left: 0px !important;
   }
 
   /* ── Animações ── */
@@ -166,9 +189,7 @@ st.markdown("""
     50%      { opacity:0.5; }
   }
 
-              /* ══════════════════════════════════════════════════════
-     TIMESTAMP FIXADO - POSICIONADO CORRETAMENTE
-  ══════════════════════════════════════════════════════ */
+/* ── TIMESTAMP FIXADO ── */
   #ts-badge {
     position: fixed;
     top: 60px;  /* Aumentado para ficar abaixo do botão de deploy */
