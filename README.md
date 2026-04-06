@@ -5,8 +5,6 @@
 
 Dashboard estratégico para análise de desempenho do setor de turismo no Nordeste brasileiro.
 
-![Dashboard Preview](https://via.placeholder.com/800x400?text=Dashboard+Preview)
-
 ## 📊 Sobre o Dashboard
 Este dashboard foi desenvolvido para apoiar a análise de desempenho de empreendimentos do setor de turismo (hotéis, pousadas e agências) nos estados do Ceará (CE), Pernambuco (PE), Piauí (PI) e Rio Grande do Norte (RN).
 
