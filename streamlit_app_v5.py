@@ -50,29 +50,39 @@ st.set_page_config(
 # ══════════════════════════════════════════════════════════════════
 # 1. DESIGN TOKENS
 # ══════════════════════════════════════════════════════════════════
-PAGE_BG      = "#05080D"   # fundo da página — muito escuro
-SIDEBAR_BG   = "#090E18"   # fundo da sidebar
-CARD_BG      = "#0B1320"   # fundo do card/seção
-CHART_CARD   = "#0F1D2E"   # fundo do card de gráfico — notavelmente mais claro que a página
-PLOT_BG      = "#07111C"   # fundo interno do Plotly — levemente mais escuro que o card
-PANEL        = "#182840"   # hover/panel
-BORDER       = "#1E3650"
-BORDER_LIGHT = "#2A4A6B"   # borda mais viva para os cards de gráfico
-GRID         = "#152538"   # linhas de grade
+PAGE_BG      = "#3B3B3B"   # fundo da página — muito escuro
+SIDEBAR_BG   = "#3B3B3B"   # fundo da sidebar
+CARD_BG      = "#3B3B3B"   # fundo do card/seção
+CHART_CARD   = "#3B3B3B"   # fundo do card de gráfico
+PLOT_BG      = "#3B3B3B"   # fundo interno do Plotly
 
-GOLD   = "#F5A623"
-TEAL   = "#20B2AA"
-CORAL  = "#FF6B6B"
-BLUE   = "#4A90E2"
-VIOLET = "#9B59B6"
-GREEN  = "#2ECC71"
-AMBER  = "#FBB13C"
-ROSE   = "#E91E8C"
+PANEL        = "#3B3B3B"   
+BORDER       = "#3B3B3B"
+BORDER_LIGHT = "#A0A1A1"   
+GRID         = "#9C9C9C"   # linhas de grade
 
+# ⚠️ CORES DOS GRÁFICOS - MAIS VIBRANTES E COM ALTO CONTRASTE
+GOLD   = "#FFB347"   # Laranja/dourado mais claro
+TEAL   = "#50EDFF"   # Turquesa neon (bem brilhante)
+CORAL  = "#FF6B6B"   # Coral
+BLUE   = "#008CFF"   # Azul profundo brilhante (DeepSkyBlue)
+VIOLET = "#C930E4"   # Roxo neon
+GREEN  = "#4FE09A"   # Verde neon brilhante
+AMBER  = "#FFED4F"   # Amarelo âmbar
+ROSE   = "#FF5B91"   # Rosa vibrante
+
+# Cores para linhas de tendência (mais grossas e visíveis)
+LINE_HOTEL    = "#00BFFF"   # Azul brilhante
+LINE_POUSADA  = "#00E5FF"   # Turquesa neon
+LINE_AGENCIA  = "#FFB347"   # Laranja dourado
+LINE_TOTAL    = "#FFFFFF"   # Branco puro
+
+# Texto
 TEXT_H = "#FFFFFF"
-TEXT_P = "#CBD5E1"
-TEXT_D = "#64748B"
+TEXT_P = "#E0E0E0"   # Mais claro
+TEXT_D = "#C2C2C2"
 
+# Mapeamento de cores para estados e tipos (CORES MAIS VIBRANTES)
 STATE_COLORS = {"CE": GOLD, "PE": TEAL, "PI": VIOLET, "RN": CORAL}
 TYPE_COLORS  = {"Hotel": BLUE, "Pousada": TEAL, "Agencia": GOLD}
 PALETTE      = [GOLD, TEAL, CORAL, BLUE, VIOLET, GREEN, AMBER]
@@ -101,7 +111,8 @@ CHART_CONFIG = {
 st.markdown("""
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap');
-
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap');
+  
   /* RESTAURA O BOTÃO DE TOGGLE DA SIDEBAR */
   button[kind="header"] {
     display: flex !important;
@@ -110,8 +121,7 @@ st.markdown("""
     background: rgba(245, 166, 35, 0.15) !important;
     border-radius: 8px !important;
     z-index: 9999 !important;
-    min-width: 516px !important;
-    width: 516px !important;
+    width: 32px !important;
     height: 32px !important;
     align-items: center !important;
     justify-content: center !important;
@@ -144,18 +154,6 @@ st.markdown("""
   }
 
   /* ── Sidebar ── */
-  section[data-testid="stSidebar"] {
-    min-width: 516px !important;
-    width: 516px !important;
-    background: #090E18 !important;
-    border-right: 1px solid #2A4A6B !important;
-    transition: all 0.35s cubic-bezier(0.4,0,0.2,1) !important;
-  }
-  
-  section[data-testid="stSidebar"] + div {
-    margin-left: 516px !important;
-  }
-   
   section[data-testid="stSidebar"] .stSelectbox > div[data-baseweb="select"] > div,
   section[data-testid="stSidebar"] .stMultiSelect > div[data-baseweb="select"] > div {
     background: #1A2436 !important;
@@ -194,41 +192,41 @@ st.markdown("""
     gap: 9px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     backdrop-filter: blur(8px);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', 'SF Mono', 'Monaco', 'Cascadia Code', monospace;
     pointer-events: none;
     animation: fadeUp 0.5s ease both;
   }
 
   #ts-dot {
-    width: 7px;
-    height: 7px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
     background: #2ECC71;
     animation: ts-blink 2s ease infinite;
     flex-shrink: 0;
   }
   #ts-label {
-    font-size: 9px;
+    font-size: 13px;
     color: #64748B;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     margin-bottom: 1px;
   }
   #ts-time {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     color: #F5A623;
     letter-spacing: 0.5px;
   }
   #ts-date {
-    font-size: 10px;
+    font-size: 13px;
     color: #CBD5E1;
     letter-spacing: 0.3px;
   }
 
   /* ── Top bar ── */
   .top-bar {
-    background: linear-gradient(135deg, #0B1320 0%, #0C1520 100%);
+    background: linear-gradient(135deg, #3863a2 0%, #0C1520 100%);
     border: 1px solid #2A4A6B;
     border-bottom: 2px solid #F5A623;
     border-radius: 16px;
@@ -238,7 +236,7 @@ st.markdown("""
   }
   .top-bar-title {
     font-family: 'Syne', sans-serif;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 800;
     background: linear-gradient(90deg, #F5A623, #FBB13C, #F5A623, #E69500, #F5A623);
     background-size: 200% auto;
@@ -251,7 +249,7 @@ st.markdown("""
   }
   .top-bar-sub {
     font-size: 11px;
-    color: #64748B;
+    color: #819de5;
     letter-spacing: 0.08em;
     margin-top: 2px;
     font-family: 'Inter', sans-serif;
@@ -303,7 +301,7 @@ st.markdown("""
 
   /* ── KPI Cards ── */
   .kpi-card {
-    background: linear-gradient(135deg, #0F1D2E 0%, #111E30 100%);
+    background: linear-gradient(185deg, #335a83 0%, #111E30 100%);
     border: 1px solid #2A4A6B;
     border-top: 3px solid var(--card-color, #F5A623);
     border-radius: 16px;
@@ -321,30 +319,32 @@ st.markdown("""
   .kpi-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+    border-radius: 16px;
+    border-color: var(--card-color, #F5A623);
   }
-  .kpi-icon { font-size: 26px; text-align: center; display: block; }
+  .kpi-icon { font-size: 30px; text-align: center; display: block; }
   .kpi-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
+    font-family: 'Inter', 'SF Mono', 'Monaco', 'Cascadia Code', monospace;
+    font-size: 13px;
     letter-spacing: 0.09em;
     text-transform: uppercase;
-    color: #64748B;
+    color: #9ab2d7;
     font-weight: 600;
     text-align: center;
     margin: 3px 0 2px;
   }
   .kpi-value {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 21px;
-    font-weight: 700;
+    font-family: 'Inter', 'SF Mono', 'Monaco', 'Cascadia Code', monospace;
+    font-size: 26px;
+    font-weight: 800;
     text-align: center;
     word-break: break-word;
     margin: 3px 0;
   }
-  .kpi-sub { font-size: 10px; color: #64748B; text-align: center; font-family: 'Inter', sans-serif; }
-  .kpi-delta-up { color: #2ECC71; font-weight: 600; font-size: 11px; text-align: center; }
-  .kpi-delta-down { color: #FF6B6B; font-weight: 600; font-size: 11px; text-align: center; }
-  .kpi-delta-neutral { color: #FBB13C; font-weight: 600; font-size: 11px; text-align: center; }
+  .kpi-sub { font-size: 13px; color: #9ab2d7; text-align: center; font-family: 'Inter', 'SF Mono', 'Monaco', 'Cascadia Code', monospace; }
+  .kpi-delta-up { color: #2ECC71; font-weight: 600; font-size: 12px; text-align: center; }
+  .kpi-delta-down { color: #FF6B6B; font-weight: 600; font-size: 12px; text-align: center; }
+  .kpi-delta-neutral { color: #FBB13C; font-weight: 600; font-size: 12px; text-align: center; }
 
   /* ── Chart Cards ── */
   .chart-card {
@@ -366,8 +366,8 @@ st.markdown("""
     border-radius: 16px 16px 0 0;
     opacity: 0.55;
   }
-  .chart-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: #FFFFFF; margin: 0 0 2px; }
-  .chart-subtitle { font-family: 'Inter', sans-serif; font-size: 10.5px; color: #64748B; margin: 0 0 8px; }
+  .chart-title { font-family: 'Inter', 'SF Mono', 'Monaco', 'Cascadia Code', monospace; font-size: 14px; font-weight: 700; color: #FFFFFF; margin: 0 0 2px; }
+  .chart-subtitle { font-family: 'Inter', 'SF Mono', 'Monaco', 'Cascadia Code', monospace; font-size: 10.5px; color: #64748B; margin: 0 0 8px; }
 
   /* ── Insights ── */
   .insight-box {
@@ -383,12 +383,12 @@ st.markdown("""
     gap: 12px;
   }
   .insight-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-  .insight-text { font-family: 'Inter', sans-serif; color: #CBD5E1; font-size: 13px; line-height: 1.55; }
+  .insight-text { font-family: 'Inter', 'SF Mono', 'Monaco', 'Cascadia Code', monospace;; color: #CBD5E1; font-size: 13px; line-height: 1.55; }
   .insight-text strong { color: #FFFFFF; }
 
   /* ── Filter titles sidebar ── */
   .filter-title {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Inter', 'SF Mono', 'Monaco', 'Cascadia Code', monospace;;
     font-size: 12px;
     font-weight: 700;
     color: #F5A623;
@@ -413,27 +413,14 @@ st.markdown("""
   }
 
   /* ── Botões tipo na sidebar ── */
-  div[data-testid="stSidebar"] .stButton > button {
-    background: #1A2A3A;
-    border: 1px solid #1E3650;
-    border-radius: 10px;
-    color: #64748B;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 12px 6px;
-    width: 100%;
-    transition: all 0.2s ease;
-    white-space: pre-line;
-    line-height: 1.3;
-  }
+
   div[data-testid="stSidebar"] .stButton > button:hover {
     background: rgba(245,166,35,0.14);
     border-color: #F5A623;
     color: #F5A623;
   }
   .active-badge {
-    background: linear-gradient(135deg,#f4c475,#E69500);
+    background: linear-gradient(185deg,#f4d9ae,#b68223);
     border-radius: 0 0 10px 10px;
     padding: 2px 0;
     text-align: center;
@@ -441,7 +428,9 @@ st.markdown("""
     font-weight: 800;
     color: #0D1117;
     letter-spacing: 1px;
+    margin-top: -24px;
   }
+            
   .inactive-ph { height: 16px; }
 
   /* ── Scrollbar ── */
@@ -723,14 +712,16 @@ with st.sidebar:
         st.markdown(f"<style>{btn_css}</style>", unsafe_allow_html=True)
 
     sel_tipos = st.session_state.tipos_selecionados
-    st.markdown("<div style='height:14px'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height:0px'></div>", unsafe_allow_html=True)
 
     # ── Período de Análise ───────────────────────────────────────
     st.markdown('<span class="filter-title">📅 Período de Análise</span>', unsafe_allow_html=True)
     meses_dict = {pt: en for pt, en in zip(MESES_PT_LIST, MESES_EN_LIST)}
 
-    if "tamanho_janela" not in st.session_state: st.session_state.tamanho_janela = 3
-    if "posicao_janela" not in st.session_state: st.session_state.posicao_janela = 0
+    if "tamanho_janela" not in st.session_state: 
+        st.session_state.tamanho_janela = 3
+    if "posicao_janela" not in st.session_state: 
+        st.session_state.posicao_janela = 0
 
     cl, cr = st.columns([0.38, 0.62])
     with cl:
@@ -744,32 +735,61 @@ with st.sidebar:
             if st.session_state.posicao_janela > max_pos:
                 st.session_state.posicao_janela = max_pos
             st.rerun()
+    
     with cr:
         st.markdown("**📍 Início**")
         max_pos = 12 - st.session_state.tamanho_janela
-        st.session_state.posicao_janela = max(0, min(st.session_state.posicao_janela, max_pos))
-        pos = st.slider("", 0, max_pos, st.session_state.posicao_janela,
-                        label_visibility="collapsed", key="slider_pos")
+        
+        # Usa uma chave que inclui o tamanho da janela para ser única
+        slider_key = f"slider_pos_{st.session_state.tamanho_janela}"
+        
+        pos = st.slider(
+            "", 
+            min_value=0, 
+            max_value=max_pos, 
+            value=st.session_state.posicao_janela,
+            step=1,
+            label_visibility="collapsed", 
+            key=slider_key
+        )
+        
+        # Atualiza a posição no session_state
         if pos != st.session_state.posicao_janela:
             st.session_state.posicao_janela = pos
             st.rerun()
-
+    
+    # ⚠️ IMPORTANTE: Define periodo_desc AQUI (depois de obter os valores)
     idx_ini = st.session_state.posicao_janela
     idx_fim = idx_ini + st.session_state.tamanho_janela - 1
     sel_meses = [meses_dict[MESES_PT_LIST[i]] for i in range(idx_ini, idx_fim + 1)]
     periodo_desc = f"{MESES_PT_LIST[idx_ini]} → {MESES_PT_LIST[idx_fim]} ({st.session_state.tamanho_janela} mês{'es' if st.session_state.tamanho_janela>1 else ''})"
-
-    html_m = '<div style="display:flex; gap:3px; margin:8px 0 3px; flex-wrap:wrap;">'
+    # Visualização dos meses (opcional)
+    html_m = '<div style="display:flex; gap:3px; margin:8px 0 0px 0; flex-wrap:wrap;">'
     for i, m in enumerate(MESES_PT_LIST):
         ativo = idx_ini <= i <= idx_fim
-        bg    = f"linear-gradient(180deg,{GOLD},{AMBER})" if ativo else BORDER
-        cor   = "#1A1A1A" if ativo else TEXT_D
+        bg    = f"linear-gradient(180deg, #F5A623, #FBB13C)" if ativo else "#325981"
+        cor   = "#1A1A1A" if ativo else "#A4C0E2"
         fw    = "800" if ativo else "500"
-        html_m += f'<div style="flex:1;min-width:26px;text-align:center;padding:5px 1px;background:{bg};border-radius:6px;color:{cor};font-size:10px;font-weight:{fw};">{m}</div>'
+        html_m += f'<div style="flex:1;min-width:26px;text-align:center;padding:5px 1px;background:{bg};border-radius:6px;color:{cor};font-size:13px;font-weight:{fw};">{m}</div>'
     html_m += "</div>"
     st.markdown(html_m, unsafe_allow_html=True)
-    st.markdown(f'<div style="text-align:center;font-size:11px;color:{TEXT_D};margin-bottom:4px;">{periodo_desc}</div>', unsafe_allow_html=True)
-    st.markdown("<div style='height:12px'></div>", unsafe_allow_html=True)
+    
+    # RESUMO COMPLETO - COLADO NA VISUALIZAÇÃO
+    max_posicoes = 12 - st.session_state.tamanho_janela + 1
+    st.markdown(f"""
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 2px; padding: 6px 10px; background: rgba(0,0,0,0.2); border-radius: 8px;">
+        <div style="font-size: 11px; color: #F5A623;">
+            📊 <strong>{st.session_state.tamanho_janela} meses</strong>
+        </div>
+        <div style="font-size: 11px; color: #CBD5E1;">
+            🔄 Posição <strong>{st.session_state.posicao_janela + 1} de {max_posicoes}</strong>
+        </div>
+        <div style="font-size: 11px; color: #20B2AA;">
+            📌 {periodo_desc}
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
 
     # ── Localização ─────────────────────────────────────────────
     st.markdown('<span class="filter-title">📍 Localização</span>', unsafe_allow_html=True)
@@ -928,7 +948,7 @@ with tab_dash:
         </script>
         """, unsafe_allow_html=True)
 
-    # ── KPIs ─────────────────────────────────────────────────────
+# ── KPIs ─────────────────────────────────────────────────────
     section("Visão Executiva", "KPIs ESTRATÉGICOS")
 
     receita_tot  = df["Receita"].sum()
@@ -949,51 +969,73 @@ with tab_dash:
         receita_med_base = df_base.groupby("Mes")["Receita"].sum().mean()
 
     pct_receita  = receita_tot / df_raw["Receita"].sum() * 100
+    pct_clientes = clientes_tot / df_raw["Clientes"].sum() * 100
     delta_ocup   = ocup_med  - ocup_base
     delta_aval   = aval_med  - aval_base
     delta_ticket = (ticket_med - ticket_base) / ticket_base * 100 if ticket_base else 0
 
-    ocup_color,   _, ocup_dt   = semaforo_ocupacao(ocup_med)
-    aval_color,   _, aval_dt   = semaforo_avaliacao(aval_med)
-    ticket_color, _, ticket_dt = semaforo_ticket(ticket_med)
-    rec_color,    _, rec_dt    = semaforo_variacao(
+    # Semáforos existentes (retornam: cor, mensagem, tipo)
+    ocup_color,   ocup_msg,   ocup_tipo   = semaforo_ocupacao(ocup_med)
+    aval_color,   aval_msg,   aval_tipo   = semaforo_avaliacao(aval_med)
+    ticket_color, ticket_msg, ticket_tipo = semaforo_ticket(ticket_med)
+    rec_color,    rec_msg,    rec_tipo    = semaforo_variacao(
         (receita_med_fil - receita_med_base) / receita_med_base * 100
         if receita_med_base and not pd.isna(receita_med_base) else 0)
 
+    # Semáforos para Receita Total e Clientes
+    def semaforo_percentual(pct):
+        if pct >= 70:
+            return "#2ECC71", "▲ Excelente", "up"
+        elif pct >= 40:
+            return "#FBB13C", "● Moderado", "neutral"
+        else:
+            return "#FF6B6B", "▼ Baixo", "down"
+
+    receita_color, receita_msg, receita_tipo = semaforo_percentual(pct_receita)
+    clientes_color, clientes_msg, clientes_tipo = semaforo_percentual(pct_clientes)
+
+    # Textos dos deltas
     ocup_delta_txt   = f"{'▲' if delta_ocup>=0 else '▼'} {abs(delta_ocup):.1f}pp vs geral"
     aval_delta_txt   = f"{'▲' if delta_aval>=0 else '▼'} {abs(delta_aval):.2f} vs meta 4.0"
     ticket_delta_txt = f"{'▲' if delta_ticket>=0 else '▼'} {abs(delta_ticket):.1f}% vs geral"
-    rec_med_msg      = f"{'▲' if (receita_med_fil-receita_med_base)>=0 else '▼'} vs baseline"
+    rec_delta_txt    = f"{'▲' if (receita_med_fil-receita_med_base)>=0 else '▼'} vs baseline"
 
     c1,c2,c3,c4,c5,c6 = st.columns(6)
+    
     with c1:
         st.markdown(kpi_html("💰","Receita Total",fmt_brl(receita_tot,2),
-                             f"{n_meses} meses filtrados",GOLD,
-                             f"{pct_receita:.0f}% do total geral","up" if pct_receita>50 else "neutral"),
+                             f"{n_meses} meses filtrados", receita_color,
+                             f"{pct_receita:.0f}% do total geral", receita_tipo),
                     unsafe_allow_html=True)
+    
     with c2:
         st.markdown(kpi_html("👥","Clientes",f"{clientes_tot:,}",
-                             f"ticket R$ {ticket_med:,.0f}",TEAL,"","neutral"),
+                             f"ticket R$ {ticket_med:,.0f}", clientes_color,
+                             f"{pct_clientes:.0f}% do total", clientes_tipo),
                     unsafe_allow_html=True)
+    
     with c3:
         st.markdown(kpi_html("🏨","Ocupação Média",f"{ocup_med:.1f}%",
-                             f"geral: {ocup_base:.1f}%",ocup_color,
-                             ocup_delta_txt,"up" if delta_ocup>=0 else "down"),
+                             f"geral: {ocup_base:.1f}%", ocup_color,
+                             ocup_delta_txt, ocup_tipo),
                     unsafe_allow_html=True)
+    
     with c4:
         st.markdown(kpi_html("⭐","Avaliação",f"{aval_med:.2f}/5",
-                             "meta: 4.0",aval_color,
-                             aval_delta_txt,"up" if delta_aval>=0 else "down"),
+                             "meta: 4.0", aval_color,
+                             aval_delta_txt, aval_tipo),
                     unsafe_allow_html=True)
+    
     with c5:
         st.markdown(kpi_html("📈","Ticket Médio",fmt_brl(ticket_med),
-                             f"geral: {fmt_brl(ticket_base)}",ticket_color,
-                             ticket_delta_txt,"up" if delta_ticket>=0 else "down"),
+                             f"geral: {fmt_brl(ticket_base)}", ticket_color,
+                             ticket_delta_txt, ticket_tipo),
                     unsafe_allow_html=True)
+    
     with c6:
         st.markdown(kpi_html("📅","Receita Média/Mês",fmt_brl(receita_med_fil,1),
-                             f"{n_meses} meses no filtro",rec_color,
-                             rec_med_msg,rec_dt),
+                             f"{n_meses} meses no filtro", rec_color,
+                             rec_delta_txt, rec_tipo),
                     unsafe_allow_html=True)
 
     # ── Tendências & Composição ───────────────────────────────────
@@ -1179,7 +1221,7 @@ with tab_dash:
                 (x_lo+(occ_med-x_lo)*0.5, aval_m+(y_hi-aval_m)*0.6, "★ Alto Potencial", GREEN),
                 (occ_med+(x_hi-occ_med)*0.5, aval_m+(y_hi-aval_m)*0.6, "🏆 Destaque Total", GOLD),
                 (x_lo+(occ_med-x_lo)*0.5, y_lo+(aval_m-y_lo)*0.35, "⚠ Atenção", CORAL),
-                (occ_med+(x_hi-occ_med)*0.5, y_lo+(aval_m-y_lo)*0.35, "📊 Operacional", BLUE),
+                (occ_med+(x_hi-occ_med)*0.5, y_lo+(aval_m-y_lo)*0.35, "📊 Operacional", TEAL),
             ]
             annotations = [
                 dict(x=qx,y=qy,text=qt,showarrow=False,
