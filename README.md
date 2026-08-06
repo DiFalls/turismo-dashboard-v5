@@ -6,7 +6,9 @@
 Dashboard estratégico para análise de desempenho do setor de turismo no Nordeste brasileiro.
 
 ## 📊 Sobre o Dashboard
-Este dashboard foi desenvolvido para apoiar a análise de desempenho de empreendimentos do setor de turismo (hotéis, pousadas e agências) nos estados do Ceará (CE), Pernambuco (PE), Piauí (PI) e Rio Grande do Norte (RN).
+Este dashboard foi desenvolvido para apoiar as análises de desempenho dos empreendimentos do setor de turismo (hotéis, pousadas e agências) nos estados do Ceará (CE), Pernambuco (PE), Piauí (PI) e Rio Grande do Norte (RN).
+
+## [Clique Aqui para Visualizar o Dashboard de Forma Online](https://tursv5.streamlit.app)
 
 ### Funcionalidades
 - **KPIs Estratégicos**: Receita Total, Clientes, Ocupação Média, Avaliação, Ticket Médio
