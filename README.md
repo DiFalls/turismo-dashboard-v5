@@ -1,6 +1,6 @@
 # 🌊 Turismo Nordeste Dashboard v4.0
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://turismo-dashboard-v4-seuusuario.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://tursv5.streamlit.app)
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
 Dashboard estratégico para análise de desempenho do setor de turismo no Nordeste brasileiro.
